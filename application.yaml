@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-goapp
+  name: app-votacao
   namespace: argocd
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/fch-bsp/voto.git
+    repoURL: https://github.com/fch-bsp/app-votacao.git
     targetRevision: HEAD
     path: k8s # monitorando de 3 em 3 minutos 
   destination: 
     server: https://kubernetes.default.svc
-    namespace: goapp
+    namespace: votacao
 
   syncPolicy:
     syncOptions:
