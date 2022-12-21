@@ -1,22 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-votacao
-  namespace: argocd
+  name: app-votacao # nome da aplicação dentro do Argo 
+  namespace: argocd # namespace do argo
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/fch-bsp/app-votacao.git
+    repoURL: https://github.com/fch-bsp/app-votacao.git  # apontamento para git root 
     targetRevision: HEAD
     path: k8s # monitorando de 3 em 3 minutos 
   destination: 
-    server: https://kubernetes.default.svc
-    namespace: votacao
+    server: https://kubernetes.default.svc 
+    namespace: votacao # namespace da aplicação  da aplicação 
 
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+    - CreateNamespace=true  # criação do namespace autom 
 
     # automated:
     #   selfHeal: false
